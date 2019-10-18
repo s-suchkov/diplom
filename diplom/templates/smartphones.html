@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main role="main">
+
+  <div class="container">
+    <!-- Example row of columns -->
+
+    <h1>{{sec.text}}</h1>
+
+    <div class="row">
+
+      {% for products in contacts %}
+      <div class="col-md-4">
+        <h2>{{products.name}}</h2>
+
+        <a href="./phone?id_product={{products.id}}">
+
+          <img src="{% get_media_prefix %}{{products.image}}" width="180">
+
+        </a>
+        {% if user.is_authenticated %}
+        <form action='' method="POST">
+          {%csrf_token%}
+            <input hidden name="cart" value="{{products.id}}">
+            <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
+        </form>
+        {% else %}
+        <form action='{% url "signup"%}'>
+
+            <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
+        </form>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div> <!-- /container -->
+    <div class="pagination">
+
+      <span class="step-links">
+        <br>
+        <br>
+          {% if contacts.has_previous %}
+              <a href="?id={{sec.id}}&page={{ contacts.previous_page_number }}"><h5>Назад</h5></a>
+          {% endif %}
+          <span class="current">
+              <h5>Страница {{ contacts.number }} из {{ contacts.paginator.num_pages }}.</h5>
+          </span>
+          {% if contacts.has_next %}
+              <a href="?id={{sec.id}}&page={{ contacts.next_page_number }}"><h5>следующая</h5></a>
+          {% endif %}
+      </span>
+    </div>
+  </div>
+</main>
+
+<hr>
+<footer class="container">
+  <p>© Просто магазин 2018</p>
+</footer>
+{% endblock %}
+</body>
+</html>
