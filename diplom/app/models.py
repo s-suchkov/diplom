@@ -59,7 +59,7 @@ class Products(models.Model):
     image = models.ImageField()
     text = models.TextField()
     section = models.ForeignKey('Section', on_delete=models.CASCADE, null=True, blank=True)
-    article = models.ManyToManyField('Article', null=True, blank=True)
+    article = models.ManyToManyField('Article', blank=True)
 
 
     def __str__(self):
@@ -80,5 +80,5 @@ class Basket(models.Model):
     author = models.EmailField(unique=False)
     buy = models.BooleanField()
     order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True, blank=True, related_name='ord')
-    product = models.ManyToManyField('Products', null=True, blank=True, related_name='bas')
+    product = models.ManyToManyField('Products', blank=True, related_name='bas')
 

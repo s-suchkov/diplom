@@ -16,7 +16,7 @@ def home(request):
         basket.product.add(product)
         basket.save()
     context = {
-        'article': Article.objects.all(),
+        'article': Article.objects.order_by('date').all(),
         'sections': sections
     }
     return render(request, template_name, context)

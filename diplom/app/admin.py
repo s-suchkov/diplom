@@ -99,6 +99,7 @@ class BasketInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     # readonly_fields = ('ord__bas_name',)
+    ordering = ('-date',)
     list_display = ('username', 'count',)
     fields = ('date', 'count',)
     inlines = [
@@ -107,13 +108,9 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 
-# @admin.register(Basket)
-# class BasketAdmin(admin.ModelAdmin):
-    # fields = ('buy',)
-    # inlines = [
-    #     MembershipInline,
-    # ]
-
+@admin.register(Basket)
+class BasketAdmin(admin.ModelAdmin):
+   pass
 
 
 
