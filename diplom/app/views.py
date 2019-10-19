@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
     template_name = 'base.html'
-    sections = Section.objects.all()
+    sections = Section.objects.exclude(id=3)
     if request.method == 'POST':
         basket, created = Basket.objects.get_or_create(author=request.user.email, buy=False)
         product = Products.objects.get(id=request.POST['cart'])
@@ -39,8 +39,10 @@ def signup(request):
     return render(
         request,
         'signup.html',
-        {'form': form,
-        'sections': Section.objects.all()}
+        {
+            'form': form,
+            'sections': Section.objects.exclude(id=3)
+         }
     )
 
 
@@ -69,7 +71,7 @@ def section(request):
     template_name = 'smartphones.html'
     context = {
         'sec': section,
-        'sections': Section.objects.all(),
+        'sections': Section.objects.exclude(id=3),
         'contacts': contacts
     }
     return render(request, template_name, context)
@@ -96,7 +98,7 @@ def phone(request):
     template_name = 'phone.html'
     context = {
         'product': product,
-        'sections': Section.objects.all(),
+        'sections': Section.objects.exclude(id=3),
     }
     return render(request, template_name, context)
 
@@ -115,7 +117,22 @@ def basket(request):
     context = {
         'len': length,
         'basket': basket,
-        'sections': Section.objects.all(),
+        'sections': Section.objects.exclude(id=3),
     }
     return render(request, template_name, context)
 
+def accessories(request):
+    section = Section.objects.get(id=3)
+    products = Products.objects.filter(section=section)
+    if request.POST.get('cart') != None:
+        basket, created = Basket.objects.get_or_create(author=request.user.email, buy=False)
+        product = Products.objects.get(id=request.POST['cart'])
+        basket.product.add(product)
+        basket.save()
+    template_name = 'empty_section.html'
+    context = {
+        'sec': section,
+        'product': products,
+        'sections': Section.objects.exclude(id=3),
+    }
+    return render(request, template_name, context)

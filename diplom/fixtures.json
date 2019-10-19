@@ -97,14 +97,6 @@
 },
 {
   "model": "sessions.session",
-  "pk": "54u2lpu2xodxfndwt8ujhc5sfbk971aw",
-  "fields": {
-    "session_data": "NDZjYjA0YTM4NmExZjlkNzY1ZjAyNDZkNTVhM2E3ZGE2NjQ4MzA2Njp7Il9hdXRoX3VzZXJfaWQiOiI2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyZTZiZjFkNzJiNTMwODYwZmMxYTIzOWM0NzhhYzY5OTgwMDIxYmM3In0=",
-    "expire_date": "2019-11-01T07:01:54.681Z"
-  }
-},
-{
-  "model": "sessions.session",
   "pk": "a02x8t0903un9g6dtys7qkez8ed28dqr",
   "fields": {
     "session_data": "MjJlNjUyYTkyYmNhOTk1MjNiMWUzODFkMTg4N2UwNzI2YjMxNzY3MDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIzODMyNGE1Nzg4YjVmYTFhNTZlNWIxZjhmYjIzNTA0Mzc2YjE2NmRjIn0=",
@@ -120,11 +112,19 @@
   }
 },
 {
+  "model": "sessions.session",
+  "pk": "ojqwzcawpvl6b02zkzxm51c0k6qkzgto",
+  "fields": {
+    "session_data": "OWI3NThkMzJiOTg0ZjA0ZjAxMzIzZmQyMDViMDAzMWE3MDY4ZjM4ODp7Il9hdXRoX3VzZXJfaWQiOiI2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlOTk5MzYzOGJhOTE2MmU0ZmQxNjc4ZmQ4OTFiMjc5OTNiZWJjYWYzIn0=",
+    "expire_date": "2019-11-02T10:51:49.574Z"
+  }
+},
+{
   "model": "app.myuser",
   "pk": 6,
   "fields": {
-    "password": "pbkdf2_sha256$120000$CBzpzPkfZaxj$a7DHYftWYVV4hfqJHj0f5gEED6S22nU9ZToMFUafUaY=",
-    "last_login": "2019-10-18T07:01:54.677Z",
+    "password": "pbkdf2_sha256$100000$p5OcZyjq3vUH$HGdRiz1s4phpKN6lDfP0ggxT/say6HhcGQ81EnSRrd0=",
+    "last_login": "2019-10-19T10:51:49.569Z",
     "email": "admin@admin.admin",
     "is_active": true,
     "is_admin": true
@@ -160,6 +160,13 @@
   "pk": 2,
   "fields": {
     "text": "\u0412\u0435\u0449\u0438"
+  }
+},
+{
+  "model": "app.section",
+  "pk": 3,
+  "fields": {
+    "text": "\u0410\u043a\u0441\u0435\u0441\u0441\u0443\u0430\u0440\u044b"
   }
 },
 {
@@ -228,6 +235,17 @@
   }
 },
 {
+  "model": "app.products",
+  "pk": 11,
+  "fields": {
+    "name": "\u041d\u0430\u0443\u0448\u043d\u0438\u043a\u0438",
+    "image": "3baba9e3-64d1-40a2-b16a-00462add68d8.jpg",
+    "text": "bluetooth  \u043d\u0430\u0443\u0448\u043d\u0438\u043a\u0438",
+    "section": 3,
+    "article": []
+  }
+},
+{
   "model": "app.order",
   "pk": 25,
   "fields": {
@@ -270,6 +288,27 @@
     "date": "2019-10-18T14:09:50.903Z",
     "username": "admin@admin.admin",
     "count": 1
+  }
+},
+{
+  "model": "app.order",
+  "pk": 30,
+  "fields": {
+    "date": "2019-10-19T18:24:33.322Z",
+    "username": "admin@admin.admin",
+    "count": 1
+  }
+},
+{
+  "model": "app.basket",
+  "pk": 6,
+  "fields": {
+    "author": "admin@admin.admin",
+    "buy": true,
+    "order": 30,
+    "product": [
+      11
+    ]
   }
 },
 {
@@ -975,6 +1014,58 @@
     "object_repr": "Article object (2)",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 176,
+  "fields": {
+    "action_time": "2019-10-19T10:52:11.357Z",
+    "user": 6,
+    "content_type": 20,
+    "object_id": "3",
+    "object_repr": "Section object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 177,
+  "fields": {
+    "action_time": "2019-10-19T10:55:08.446Z",
+    "user": 6,
+    "content_type": 21,
+    "object_id": "11",
+    "object_repr": "\u041d\u0430\u0443\u0448\u043d\u0438\u043a\u0438",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 178,
+  "fields": {
+    "action_time": "2019-10-19T11:04:38.590Z",
+    "user": 6,
+    "content_type": 20,
+    "object_id": "3",
+    "object_repr": "Section object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 179,
+  "fields": {
+    "action_time": "2019-10-19T11:32:19.850Z",
+    "user": 6,
+    "content_type": 22,
+    "object_id": "28",
+    "object_repr": "Review object (28)",
+    "action_flag": 3,
+    "change_message": ""
   }
 }
 ]

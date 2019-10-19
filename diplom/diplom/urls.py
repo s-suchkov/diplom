@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from app.views import signup, home, phone, section, basket
+from app.views import signup, home, phone, section, basket, accessories
 from django.contrib.auth.views import LoginView, LogoutView
 
 
@@ -26,6 +26,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accessories', accessories, name='accessories'),
     path('', home, name='main'),
     path('section/phone/', phone, name='phone'),
     path('section/', section, name='section'),
